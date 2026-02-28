@@ -1,10 +1,11 @@
-let num = "chlp";
+let num = 56;
 
 function convert(num) {
-    if (Number.isNaN(Number(num))) {
+    let new_num = Number(num);
+    if (Number.isNaN(new_num)) {
         return null;
     }
-    return num;
+    return new_num;
 }
 
 console.log(convert(num));

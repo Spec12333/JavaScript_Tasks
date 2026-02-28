@@ -1,16 +1,16 @@
-let value = undefined;
+let value = "string";
 function typecheck(value) {
     if (value === null) {
         return "Null";
-    } else if (value === Array.isArray(value)) {
+    } else if (Array.isArray(value)) {
         return "Array";
-    } else if (value === undefined) {
+    } else if (typeof value === undefined) {
         return "undefined";
-    } else if (value === "number") {
+    } else if (typeof value === "number") {
         return Number.isNaN(value) ? "NaN" : "Number";
-    } else if (value === "function") {
+    } else if (typeof value === "function") {
         return "Function";
-    } else if (value === "object") {
+    } else if (typeof value === "object") {
         return "Object";
     } else {
         return typeof value;
