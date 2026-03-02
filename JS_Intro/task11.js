@@ -4,7 +4,7 @@ function typecheck(value) {
         return "Null";
     } else if (Array.isArray(value)) {
         return "Array";
-    } else if (typeof value === undefined) {
+    } else if (typeof value === "undefined") {
         return "undefined";
     } else if (typeof value === "number") {
         return Number.isNaN(value) ? "NaN" : "Number";
