@@ -2,7 +2,7 @@ class Book {
     #title;
     #author;
     #year;
-    #isAvailable = true;;
+    #isAvailable;
     constructor(title, author, year) {
         this.#title = title;
         this.#author = author;
@@ -206,8 +206,8 @@ class Library {
 
     findBookByTitle(title) {
         for (let i = 0; i < this.#books.length; ++i) {
-            if (this.#books[i].title === title) {
-                return this.#books[i].getInfo();
+            if (this.#books[i].matchesTitle(title)) {
+                return this.#books[i];
             }
         }
         return null;
@@ -217,16 +217,16 @@ class Library {
         let found_books = [];
         for (let i = 0; i < this.#books.length; ++i) {
             if (this.#books[i].author === authorName) {
-                found_books.push(this.#books[i].getInfo());
+                found_books.push(this.#books[i]);
             }
         }
-        return found_books
+        return found_books;
     }
 
     giveBookToReader(title, reader) {
         for (let i = 0; i < this.#books.length; ++i) {
-            if (this.#books[i].title === title) {
-                reader.takeBook(this.#books[i]);
+            if (this.#books[i].matchesTitle(title)) {
+                return reader.takeBook(this.#books[i]);
             }
         }
         return "The title of book could not be found";
@@ -234,8 +234,8 @@ class Library {
 
     acceptBookFromReader(title, reader) {
         for (let i = 0; i < this.#books.length; ++i) {
-            if (this.#books[i].title === title) {
-                reader.giveBackBook(this.#books[i].getInfo());
+            if (this.#books[i].matchesTitle(title)) {
+                return reader.giveBackBook(this.#books[i]);
             }
         }
         return "The title of book could not be found";
@@ -245,7 +245,7 @@ class Library {
         let available_books = [];
         for (let i = 0; i < this.#books.length; ++i) {
             if (this.#books[i].isAvailable === true) {
-                available_books.push(this.#books[i].getInfo());
+                available_books.push(this.#books[i]);
             }
         }
         return available_books;
@@ -312,4 +312,4 @@ console.log("=== Final available books ===");
 console.log(library.showAvailableBooks());
 
 console.log("=== Final library info ===");
-console.log(library.getLibraryInfo());1
+console.log(library.getLibraryInfo());

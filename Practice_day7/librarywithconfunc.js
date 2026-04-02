@@ -6,10 +6,7 @@ function Book(title, author, year, isAvailable = true) {
 }
 
 Book.prototype.getInfo = function() {
-    return  `The title of book ${this.title} 
-    The author of book ${this.author}
-    The realise year of book ${this.year}
-    Is the book Available or not ${this.isAvailable}`;
+    return `The title of book ${this.title} The author of book ${this.author} The realise year of book ${this.year} Is the book Available ${this.isAvailable}`;
 }
 
 Book.prototype.borrowBook = function() {
@@ -73,7 +70,7 @@ Library.prototype.removeBook = function(title) {
 
 Library.prototype.findBooksByTitle = function(title) {
     for (let i = 0; i < this.books.length; ++i) {
-        if (this.books[i].title === title) {
+        if (this.books[i].matchesTitle(title)) {
             return this.books[i];
         }
     }
@@ -83,7 +80,7 @@ Library.prototype.findBooksByTitle = function(title) {
 Library.prototype.findBooksByAuthor = function(authorName) {
     let books = [];
     for (let i = 0; i < this.books.length; ++i) {
-        if (this.books[i].author === authorName) {
+        if (this.books[i].matchesAuthor(authorName)) {
             books.push(this.books[i]);
         }
     }
@@ -102,7 +99,7 @@ Library.prototype.getAvailableBooks= function() {
 
 Library.prototype.borrowBook = function(title) {
     for (let i = 0; i < this.books.length; ++i) {
-        if (this.books[i].title === title) {
+        if (this.books[i].matchesTitle(title)) {
             return this.books[i].borrowBook();
         }
     }
@@ -111,7 +108,7 @@ Library.prototype.borrowBook = function(title) {
 
 Library.prototype.returnBook = function(title) {
     for (let i = 0; i < this.books.length; ++i) {
-        if (this.books[i].title === title) {
+        if (this.books[i].matchesTitle(title)) {
             return this.books[i].returnBook();
         }
     }
@@ -119,7 +116,11 @@ Library.prototype.returnBook = function(title) {
 }
 
 Library.prototype.showAllBooks = function() {
-    return this.books;
+    let all_books = [];
+    for (let i = 0; i < this.books.length; ++i) {
+        all_books.push(this.books[i].getInfo());
+    }
+    return all_books;
 }
 
 Library.prototype.countBooks = function() {

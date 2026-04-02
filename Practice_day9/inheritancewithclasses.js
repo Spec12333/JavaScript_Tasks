@@ -17,7 +17,7 @@ class Animal {
     }
 
     getInfo() {
-        return `Name: ${this.name}, Age ${this.age}`;
+        return `Name: ${this.name}, Age: ${this.age}`;
     }
 }
 
@@ -32,7 +32,7 @@ class Dog extends Animal {
     }
 
     getInfo() {
-        return `Name: ${this.name}, Age ${this.age}, Breed ${this.breed}`;
+        return `Name: ${this.name}, Age: ${this.age}, Breed: ${this.breed}`;
     }
 }
 
@@ -47,7 +47,7 @@ class Cat extends Animal {
     }
 
     getInfo() {
-        return `Name: ${this.name} Age: ${this.age} Color: ${this.color}`;
+        return `Name: ${this.name} Age: ${this.age}, Color: ${this.color}`;
     }
 }
 

@@ -7,7 +7,7 @@ class Book {
     }
     
     getInfo() {
-        return `The title of book ${this.title} The author ${this.author} The year of book${this.year} Is it available ${this.isAvailable}`;
+        return `The title of book ${this.title} The author ${this.author} The year of book ${this.year} Is it available ${this.isAvailable}`;
     }
 
     borrowBook() {
@@ -73,7 +73,7 @@ class Library {
 
     findBookByTitle(title) {
         for (let i = 0; i < this.books.length; ++i) {
-            if (this.books[i].title === title) {
+            if (this.books[i].matchesTitle(title)) {
                 return this.books[i];
             }
         }
@@ -83,7 +83,7 @@ class Library {
     findBooksByAuthor(authorName) {
         let author_books = [];
         for (let i = 0; i < this.books.length; ++i) {
-            if (this.books[i].author === authorName) {
+            if (this.books[i].matchesAuthor(authorName)) {
                 author_books.push(this.books[i]);
             }
         }
@@ -102,7 +102,7 @@ class Library {
 
     borrowBook(title) {
         for (let i = 0; i < this.books.length; ++i) {
-            if (this.books[i].title === title) {
+            if (this.books[i].matchesTitle(title)) {
                 return this.books[i].borrowBook();
             }
         }
@@ -111,15 +111,19 @@ class Library {
 
     returnBook(title) {
         for (let i = 0; i < this.books.length; ++i) {
-            if (this.books[i].title === title) {
-                this.books[i].returnBook();
+            if (this.books[i].matchesTitle(title)) {
+                return this.books[i].returnBook();
             }
         }
         return "You couldnt return that book";
     }   
 
     showAllBooks() {
-        return this.books;
+        let all_books = [];
+        for (let i = 0; i < this.books.length; ++i) {
+            all_books.push(this.books[i].getInfo());
+        }
+        return all_books;
     }
 
     countBooks() {
