@@ -141,7 +141,7 @@ Library.prototype.searchBooks = function(word) {
 }
 
 Library.prototype.getOldestBook = function() {
-    if (this.book.length === 0) {
+    if (this.books.length === 0) {
         return null;
     }
 
