@@ -4,9 +4,9 @@ class Book {
     #year;
     #isAvailable;
     constructor(title, author, year) {
-        this.#title = title;
-        this.#author = author;
-        this.#year = year;
+        this.title = title;
+        this.author = author;
+        this.year = year;
         this.#isAvailable = true;
     }
 
@@ -165,7 +165,7 @@ class Library {
             console.log("The name can not be an empty string");
             return;
         }
-        return this.#name = name;
+        this.#name = name;
     }
 
     get books() {
@@ -206,7 +206,7 @@ class Library {
 
     findBookByTitle(title) {
         for (let i = 0; i < this.#books.length; ++i) {
-            if (this.#books[i].matchesTitle(title)) {
+            if (this.#books[i].title === title) {
                 return this.#books[i];
             }
         }
@@ -256,7 +256,7 @@ class Library {
     }
 
     getLibraryInfo() {
-        return `In Library we have ${this.#books.length} books and ${this.#readers.length} readers`;
+        return `In ${this.#name} we have ${this.#books.length} books and ${this.#readers.length} readers`;
     }
 }
 
