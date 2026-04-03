@@ -84,7 +84,7 @@ class Reader {
     #name;
     #borrowedBooks;
     constructor(name) {
-        this.#name = name;
+        this.name = name;
         this.#borrowedBooks = [];
     }
 
@@ -151,7 +151,7 @@ class Library {
     #readers;
 
     constructor(name) {
-        this.#name = name;
+        this.name = name;
         this.#books = [];
         this.#readers = [];
     }
