@@ -38,8 +38,7 @@ class Book {
 }
 
 class Library {
-    constructor(name) {
-        this.name = name;
+    constructor() {
         this.books = [];
     }
 
@@ -73,7 +72,7 @@ class Library {
 
     findBookByTitle(title) {
         for (let i = 0; i < this.books.length; ++i) {
-            if (this.books[i].matchesTitle(title)) {
+            if (this.books[i].title === title) {
                 return this.books[i];
             }
         }
@@ -102,7 +101,7 @@ class Library {
 
     borrowBook(title) {
         for (let i = 0; i < this.books.length; ++i) {
-            if (this.books[i].matchesTitle(title)) {
+            if (this.books[i].title === title) {
                 return this.books[i].borrowBook();
             }
         }
@@ -111,7 +110,7 @@ class Library {
 
     returnBook(title) {
         for (let i = 0; i < this.books.length; ++i) {
-            if (this.books[i].matchesTitle(title)) {
+            if (this.books[i].title === title) {
                 return this.books[i].returnBook();
             }
         }
@@ -137,7 +136,7 @@ class Library {
     searchBooks(word) {
         let searched_books = [];
         for (let i = 0; i < this.books.length; ++i) {
-            if (this.books[i].title.includes(word)) {
+            if (this.books[i].matchesTitle(word)) {
                 searched_books.push(this.books[i]);
             }
         }
