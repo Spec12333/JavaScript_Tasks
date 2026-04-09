@@ -3,7 +3,7 @@ function myInstanceOf(obj, Constructor) {
         return false;
     }
     if (obj === null) {
-        return true;
+        return false;
     }
     
     let tmp = obj.__proto__;

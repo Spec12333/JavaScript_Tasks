@@ -1,8 +1,7 @@
 function myNew(Constructor, ...args) {
     let obj = {};
     obj.__proto__ = Constructor.prototype;
-    Constructor.call(obj, ...args);
-    let func_call = Constructor();
+    let func_call = Constructor.call(obj, ...args);
     if (typeof func_call === "object" && func_call !== null) {
         return func_call;
     }
